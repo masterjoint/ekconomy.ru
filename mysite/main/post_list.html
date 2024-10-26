@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <h1>Посты</h1>
+    <a href="{% url 'post_create' %}" class="btn btn-primary">Добавить пост</a>
+    <ul class="list-group">
+        {% for post in posts %}
+            <li class="list-group-item">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content }}</p>
+                <a href="{% url 'post_update' post.pk %}" class="btn btn-warning">Редактировать</a>
+                <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Удалить</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
